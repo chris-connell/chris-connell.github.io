@@ -213,51 +213,266 @@ def write_if_changed(path: Path, text: str) -> bool:
     return True
 
 
-def main() -> None:
-    seeds = json.loads((PUB / "curated.json").read_text(encoding="utf-8"))
-    if len({s["key"] for s in seeds}) != len(seeds):
-        raise ValueError("Duplicate BibTeX keys in curated.json")
-    if len({s["arxiv_id"] for s in seeds if s.get("arxiv_id")}) != len([s for s in seeds if s.get("arxiv_id")]):
-        raise ValueError("Duplicate arXiv IDs in curated.json")
+# The manually checked bibliography is connell.bib.
+# papers.bib is a generated union of reviewed records and discovery candidates.
+import argparse
+import hashlib
+import os
+import bibtexparser
+from collections import Counter
 
-    arxiv = arxiv_by_ids([s["arxiv_id"] for s in seeds if s.get("arxiv_id")])
-    merged = []
-    for seed in seeds:
-        p = seed.copy()
-        current = arxiv.get(seed.get("arxiv_id", ""), {})
-        if current:
-            # Do not change citation key, author attribution, curated journal or year.
-            p["arxiv_updated"] = current.get("updated", "")
-            if not p.get("doi") and current.get("doi"):
-                p["doi"] = current["doi"]
-        if p.get("doi"):
-            p.update(doi_metadata(p["doi"], p["title"]))
-        elif not p.get("journal"):
-            # A strict title match allows a reviewed preprint to transition to a journal article.
-            p.update(crossref_title_lookup(p["title"]))
-        merged.append(p)
 
-    merged.sort(key=lambda p: (-int(p["year"]), p["title"].casefold()))
-    bib = "% Generated bibliography. Edit publications/curated.json, not this file.\n\n"
-    bib += "\n\n".join(bib_entry(p) for p in merged) + "\n"
-    changed = []
-    outputs = {
-        "papers.bib": bib,
-        "papers.json": json.dumps(merged, indent=2, ensure_ascii=False) + "\n",
-        "_list.qmd": render_markdown(merged),
-    }
-    for name, contents in outputs.items():
-        if write_if_changed(PUB / name, contents):
-            changed.append(name)
+def read_bib(content):
+    parsed = bibtexparser.loads(content)
+    if not parsed.entries:
+        raise ValueError("No valid entries in connell.bib")
+    keys = [e["ID"] for e in parsed.entries]
+    if len(keys) != len(set(keys)):
+        raise ValueError("Repeated citation keys in connell.bib")
+    return parsed.entries
 
-    # A failed discovery fetch must not overwrite an existing candidate review file.
-    candidates = discover_candidates({s["arxiv_id"] for s in seeds if s.get("arxiv_id")})
-    if candidates:
-        text = json.dumps(candidates, indent=2, ensure_ascii=False) + "\n"
-        if write_if_changed(PUB / "candidates.json", text):
-            changed.append("candidates.json")
 
-    print(f"Curated publications: {len(merged)}; updated files: {', '.join(changed) or 'none'}")
+def checked_record(e):
+    f = {k.lower(): v for k, v in e.items()}
+    found = re.search(r"\b(?:18|19|20)\d{2}\b", f.get("year") or f.get("date") or "")
+    names = re.split(r"\s+and\s+", f.get("author", f.get("editor", "")), flags=re.I)
+    authors = []
+    for name in names:
+        name = name.strip()
+        if name.count(",") == 1:
+            last, first = name.split(",", 1)
+            name = first.strip() + " " + last.strip()
+        if name:
+            authors.append(name)
+    return dict(key=f["id"], title=f.get("title", ""),
+                authors=authors, year=int(found.group()) if found else 0,
+                journal=f.get("journal") or f.get("journaltitle") or "",
+                doi=clean_doi(f.get("doi", "")),
+                arxiv_id=clean_arxiv(f.get("eprint", "") or f.get("arxivid", "") or f.get("url", "")),
+                sources=["verified"], url=f.get("url", ""),
+                volume=f.get("volume", ""), issue=f.get("number", ""),
+                page=f.get("pages", ""), type=f.get("entrytype", "misc"))
+
+
+def clean_doi(s):
+    return re.sub(r"(?i)^https?://(?:dx\.)?doi.org/", "", str(s or "").strip()).lower()
+
+
+def clean_arxiv(s):
+    s = str(s or "").strip().removeprefix("arXiv:")
+    s = s.split("arxiv.org/abs/")[-1].split("arxiv.org/pdf/")[-1]
+    s = re.sub(r"v\d+$", "", s).removesuffix(".pdf")
+    return s if re.fullmatch(r"(?:\d{4}\.\d{4,5}|[A-Za-z.-]+/\d{7})", s) else ""
+
+
+def connell_author(p):
+    return any(re.search(r"\b(?:Chris|Christopher|C\.?\s*G\.?)\b[^,]*\bConnell\b|"
+                         r"\bConnell,\s*(?:Chris|Christopher|C\.?\s*G\.?)",
+                         n, re.I) for n in p.get("authors", []))
+
+
+def arxiv_source(queries):
+    result = []
+    for query in queries:
+        start, limit = 0, 1000
+        while start < limit:
+            url = ARXIV_API + "?" + urlencode({"search_query": query, "start": start,
+                "max_results": min(100, limit-start), "sortBy": "submittedDate",
+                "sortOrder": "descending"})
+            raw = get(url)
+            if not raw:
+                break
+            try:
+                root = ET.fromstring(raw)
+                found = parse_arxiv(raw)
+            except (ET.ParseError, ValueError):
+                break
+            for p in found.values():
+                p["journal"] = p.get("journal_ref", "")
+                p["doi"] = clean_doi(p.get("doi", ""))
+                p["sources"] = ["arXiv"]
+                if connell_author(p):
+                    result.append(p)
+            num = len(root.findall("{http://www.w3.org/2005/Atom}entry"))
+            total = int(root.findtext("{http://a9.com/-/spec/opensearch/1.1/}totalResults") or 0)
+            start += num
+            if num == 0 or start >= total:
+                break
+            time.sleep(3)
+    return result
+
+
+def crossref_source(names):
+    result = []
+    for name in names:
+        for offset in (0, 100, 200):
+            url = "https://api.crossref.org/works?" + urlencode({"query.author": name,
+                "rows": 100, "offset": offset, "select":
+                "DOI,title,author,container-title,published,volume,issue,page,type,URL"})
+            raw = get(url)
+            if not raw:
+                break
+            try:
+                items = json.loads(raw)["message"]["items"]
+            except (KeyError, ValueError, TypeError):
+                break
+            for r in items:
+                dates = (r.get("published") or {}).get("date-parts") or []
+                authors = [(a.get("given", "") + " " + a.get("family", "")).strip()
+                           for a in r.get("author", [])]
+                p = dict(title=(r.get("title") or [""])[0], authors=authors,
+                         year=int(dates[0][0]) if dates and dates[0] else 0,
+                         journal=(r.get("container-title") or [""])[0],
+                         doi=clean_doi(r.get("DOI", "")), volume=r.get("volume", ""),
+                         issue=r.get("issue", ""), page=r.get("page", ""),
+                         sources=["Crossref"])
+                if p["title"] and connell_author(p):
+                    result.append(p)
+            if len(items) < 100:
+                break
+    return result
+
+
+def dblp_source(pid):
+    if not re.fullmatch("[a-zA-Z0-9/_-]+", pid or ""):
+        return []
+    raw = get("https://dblp.org/pid/" + pid + ".bib")
+    if not raw:
+        return []
+    try:
+        entries = read_bib(raw.decode("utf-8-sig"))
+        result = [checked_record(e) for e in entries]
+    except (ValueError, UnicodeError):
+        return []
+    for p in result:
+        p["sources"] = ["dblp"]
+    return [p for p in result if connell_author(p)]
+
+
+def openalex_source(checked, configured_ids):
+    ids = {x for x in configured_ids if re.fullmatch("A[0-9]+", x)}
+    if not ids:
+        # Require two independently verified DOIs supporting the same author ID.
+        support = Counter()
+        for doi in list(dict.fromkeys(p["doi"] for p in checked if p.get("doi")))[:12]:
+            raw = get("https://api.openalex.org/works/doi:" + quote(doi, safe="/"))
+            if not raw:
+                continue
+            try:
+                r = json.loads(raw)
+                for a in r.get("authorships", []):
+                    name = a.get("author", {}).get("display_name", "")
+                    aid = a.get("author", {}).get("id", "").rsplit("/", 1)[-1]
+                    if re.search(r"\bConnell\b", name, re.I) and re.fullmatch("A[0-9]+", aid):
+                        support[aid] += 1
+            except (ValueError, TypeError):
+                continue
+        ids = {aid for aid, num in support.items() if num >= 2}
+    result = []
+    for aid in sorted(ids):
+        for page in range(1, 6):
+            params = {"filter": "author.id:" + aid, "page": page, "per_page": 100}
+            if os.environ.get("OPENALEX_API_KEY"):
+                params["api_key"] = os.environ["OPENALEX_API_KEY"]
+            raw = get("https://api.openalex.org/works?" + urlencode(params))
+            if not raw:
+                break
+            try:
+                docs = json.loads(raw)["results"]
+            except (ValueError, KeyError):
+                break
+            for r in docs:
+                loc = r.get("primary_location") or {}
+                p = dict(title=r.get("title") or "",
+                         authors=[a.get("author", {}).get("display_name", "")
+                                  for a in r.get("authorships", [])],
+                         year=r.get("publication_year") or 0,
+                         doi=clean_doi(r.get("doi", "")),
+                         journal=(loc.get("source") or {}).get("display_name", ""),
+                         url=loc.get("landing_page_url", ""), sources=["OpenAlex"])
+                if p["title"] and connell_author(p):
+                    result.append(p)
+            if len(docs) < 100:
+                break
+    return result
+
+
+def merge_duplicates(papers):
+    output, ids, titles = [], {}, {}
+    for p in papers:
+        title = norm_title(p.get("title", ""))
+        if not title:
+            continue
+        possible = set()
+        for field, cleaner in (("doi", clean_doi), ("arxiv_id", clean_arxiv)):
+            value = cleaner(p.get(field, ""))
+            if value and (field, value) in ids:
+                possible.add(ids[(field, value)])
+        if title in titles:
+            possible.add(titles[title])
+        if len(possible) > 1:
+            print("Ambiguous metadata merge:", p["title"], file=sys.stderr)
+            continue
+        if possible:
+            index = possible.pop()
+            existing = output[index]
+            for key, val in p.items():
+                if key == "sources":
+                    existing[key] = sorted(set(existing.get(key, []) + (val or [])))
+                elif val and not existing.get(key):
+                    existing[key] = val
+        else:
+            index = len(output)
+            output.append(dict(p))
+            existing = output[index]
+        titles[title] = index
+        for field, cleaner in (("doi", clean_doi), ("arxiv_id", clean_arxiv)):
+            value = cleaner(p.get(field, "") or existing.get(field, ""))
+            if value:
+                ids[(field, value)] = index
+    return output
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--discover", action="store_true")
+    args = parser.parse_args()
+    checked_bib = (PUB / "connell.bib").read_text("utf-8")
+    manual = read_bib(checked_bib)
+    checked = [checked_record(p) for p in manual]
+    checked.sort(key=lambda p: (-p["year"], p["title"].lower()))
+    write_if_changed(PUB / "papers.json", json.dumps(checked, ensure_ascii=False, indent=2) + "\n")
+    write_if_changed(PUB / "_list.qmd", render_markdown(checked))
+    cache_file = PUB / "discovered.json"
+    cache = json.loads(cache_file.read_text("utf-8")) if cache_file.exists() else []
+    if args.discover:
+        config = json.loads((PUB / "sources.json").read_text("utf-8"))
+        new = arxiv_source(config.get("arxiv_queries", []))
+        new += crossref_source(config.get("crossref_author_queries", []))
+        new += dblp_source(config.get("dblp_pid", ""))
+        new += openalex_source(checked, config.get("openalex_author_ids", []))
+        cache = merge_duplicates(cache + new)
+        write_if_changed(cache_file, json.dumps(cache, ensure_ascii=False, indent=2) + "\n")
+    union = merge_duplicates(checked + cache)
+    known_titles = {norm_title(p["title"]) for p in checked}
+    known_dois = {p["doi"] for p in checked if p["doi"]}
+    known_arxiv = {p["arxiv_id"] for p in checked if p["arxiv_id"]}
+    candidates = []
+    combined_bib = ["% GENERATED: Do not edit papers.bib.",
+                    "% Reviewed and displayed bibliography is connell.bib.",
+                    "% The candidate section is unverified and may contain namesakes.",
+                    "", checked_bib.rstrip(), "", "% UNREVIEWED CANDIDATES", ""]
+    for p in sorted(union, key=lambda item: (-int(item.get("year", 0)), item["title"].lower())):
+        if norm_title(p["title"]) in known_titles or clean_doi(p.get("doi", "")) in known_dois or clean_arxiv(p.get("arxiv_id", "")) in known_arxiv:
+            continue
+        id_text = clean_doi(p.get("doi", "")) or clean_arxiv(p.get("arxiv_id", "")) or norm_title(p["title"])
+        p["key"] = "CandidateConnell" + str(p.get("year") or "XXXX") + "_" + hashlib.sha1(id_text.encode()).hexdigest()[:10]
+        combined_bib += ["% Unreviewed; sources: " + ", ".join(p.get("sources", [])), bib_entry(p), ""]
+        candidates.append(p)
+    write_if_changed(PUB / "papers.bib", "\n".join(combined_bib).rstrip() + "\n")
+    write_if_changed(PUB / "candidates.json",
+                     json.dumps(candidates, ensure_ascii=False, indent=2) + "\n")
+    print(f"Verified {len(checked)}, total collected {len(union)}, candidates {len(candidates)}")
 
 
 if __name__ == "__main__":
