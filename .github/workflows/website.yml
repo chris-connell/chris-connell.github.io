@@ -22,41 +22,29 @@ jobs:
     environment:
       name: github-pages
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-
-      - name: Refresh reviewed publications and discover candidates
-        run: python scripts/sync_publications.py
-
-      - name: Save synchronized publication metadata
+          cache: pip
+      - name: Install bibliography parser
+        run: python -m pip install -r requirements.txt
+      - name: Generate bibliography and refresh scholarly sources
+        run: |
+          python scripts/sync_publications.py --discover
+      - name: Commit generated records
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add publications/papers.bib publications/papers.json publications/_list.qmd publications/candidates.json
+          git add publications/papers.bib publications/papers.json publications/_list.qmd publications/candidates.json publications/discovered.json
           if ! git diff --cached --quiet; then
-            git commit -m "Update scholarly bibliography"
+            git commit -m "Refresh publication records"
             git push
           fi
-
-      - name: Set up Quarto
-        uses: quarto-dev/quarto-actions/setup@v2
-
-      - name: Render website
-        run: quarto render
-
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload rendered website
-        uses: actions/upload-pages-artifact@v4
+      - uses: quarto-dev/quarto-actions/setup@v2
+      - run: quarto render
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
         with:
           path: _site
-
-      - name: Deploy GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - uses: actions/deploy-pages@v4

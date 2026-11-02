@@ -1,0 +1,27 @@
+name: Validate bibliography changes
+
+on:
+  pull_request:
+  push:
+    branches: [publication-sources-split]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -r requirements.txt
+      - run: |
+          python -m py_compile scripts/sync_publications.py
+          python scripts/sync_publications.py
+          test -s publications/_list.qmd
+          test -s publications/papers.json
+          test -s publications/connell.bib
+          test -s publications/papers.bib
+          python -c "import json; assert len(json.load(open('publications/papers.json'))) >= 10"
