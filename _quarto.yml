@@ -1,0 +1,48 @@
+project:
+  type: website
+  output-dir: _site
+  resources:
+    - publications/papers.bib
+    - publications/papers.json
+    - assets/favicon.svg
+
+website:
+  title: "Christopher G. Connell"
+  site-url: "https://chris-connell.github.io"
+  description: "Research and publications of Christopher G. Connell, Professor of Mathematics at Indiana University Bloomington."
+  favicon: assets/favicon.svg
+  navbar:
+    background: "#142d41"
+    foreground: "#f7fbff"
+    left:
+      - text: Home
+        href: index.qmd
+      - text: Research
+        href: research.qmd
+      - text: Publications
+        href: publications.qmd
+      - text: Talks
+        href: talks.qmd
+      - text: Teaching
+        href: teaching.qmd
+      - text: CV
+        href: cv.qmd
+    right:
+      - icon: envelope
+        href: mailto:connell@iu.edu
+        aria-label: Email
+      - icon: github
+        href: https://github.com/chris-connell
+        aria-label: GitHub
+  page-footer:
+    left: "© Christopher G. Connell"
+    right: "Indiana University Bloomington · Built with Quarto"
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: false
+    smooth-scroll: true
+    link-external-newwindow: true
+    html-math-method: mathjax

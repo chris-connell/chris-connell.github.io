@@ -1,0 +1,19 @@
+---
+title: "Publications"
+---
+
+# Publications
+
+This is a **selected list** of my work, not yet a complete historical bibliography. Records below are assembled from an explicitly reviewed seed list, and the automated updater checks arXiv and journal metadata for changes.
+
+[Download selected publications as BibTeX](publications/papers.bib){.btn .btn-primary}
+
+::: {.pub-list}
+
+{{< include publications/_list.qmd >}}
+
+:::
+
+::: {.note-text}
+The publication synchronizer preserves stable BibTeX citation keys and records potential newly discovered papers separately for review, rather than silently attributing papers with similar author names.
+:::

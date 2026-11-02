@@ -1,0 +1,9 @@
+---
+title: "Teaching"
+---
+
+# Teaching
+
+Course information, teaching materials, and student resources will be organized here.
+
+For current courses and advising information, please refer to the [Indiana University Department of Mathematics](https://math.indiana.edu/).

@@ -1,0 +1,23 @@
+---
+title: "Research"
+---
+
+# Research
+
+My research centers on differential geometry and its connections with topology, rigidity, and dynamics.
+
+## Geometric rigidity
+
+I study relationships between curvature, global geometry, and the topology and dynamics of manifolds. Recurring themes include nonpositively curved manifolds, locally symmetric spaces, rigidity phenomena, and geodesic flows.
+
+## Geometry and topology
+
+Another focus is the interaction of geometric structures with topological invariants, including simplicial volume and homological questions for manifolds and discrete groups.
+
+## Dynamical and probabilistic methods
+
+I am interested in geometric aspects of ergodic theory, random walks, and dynamics on curved spaces.
+
+## Papers and preprints
+
+A selection of research articles and preprints is available on the [publications page](publications.qmd). That list is being expanded and connected to journal and arXiv metadata.
