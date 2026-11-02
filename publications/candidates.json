@@ -1,1 +1,171 @@
-[]
+[
+  {
+    "arxiv_id": "2104.11990",
+    "title": "Carnot metrics, Dynamics and Local Rigidity",
+    "authors": [
+      "Chris Connell",
+      "Thang Nguyen",
+      "Ralf Spatzier"
+    ],
+    "year": 2021
+  },
+  {
+    "arxiv_id": "2103.07080",
+    "title": "DynACPD Embedding Algorithm for Prediction Tasks in Dynamic Networks",
+    "authors": [
+      "Chris Connell",
+      "Yang Wang"
+    ],
+    "year": 2021
+  },
+  {
+    "arxiv_id": "1810.00124",
+    "title": "Homological norms on nonpositively curved manifolds",
+    "authors": [
+      "Chris Connell",
+      "Shi Wang"
+    ],
+    "year": 2018
+  },
+  {
+    "arxiv_id": "1809.06909",
+    "title": "Maximal volume entropy rigidity for $\\mathsf{RCD}^*(-(N-1),N)$ spaces",
+    "authors": [
+      "Chris Connell",
+      "Xianzhe Dai",
+      "Jesús Núñez-Zimbrón",
+      "Raquel Perales",
+      "Pablo Suárez-Serrato",
+      "Guofang Wei"
+    ],
+    "year": 2018
+  },
+  {
+    "arxiv_id": "1801.08597",
+    "title": "Some remarks on the simplicial volume of nonpositively curved manifolds",
+    "authors": [
+      "Chris Connell",
+      "Shi Wang"
+    ],
+    "year": 2018
+  },
+  {
+    "arxiv_id": "1801.04659",
+    "title": "The Circular Law for Random Matrices with Intra-row Dependence",
+    "authors": [
+      "Chris Connell",
+      "Pawan Patel"
+    ],
+    "year": 2018
+  },
+  {
+    "arxiv_id": "1705.02437",
+    "title": "Hyperbolic rank rigidity for manifolds of $\\frac14$-pinched negative curvature",
+    "authors": [
+      "Chris Connell",
+      "Thang Nguyen",
+      "Ralf Spatzier"
+    ],
+    "year": 2017
+  },
+  {
+    "arxiv_id": "1704.00099",
+    "title": "Positivity of Simplicial Volume for Nonpositively Curved Manifolds with a Ricci-type curvature condition",
+    "authors": [
+      "Chris Connell",
+      "Shi Wang"
+    ],
+    "year": 2017
+  },
+  {
+    "arxiv_id": "1610.00832",
+    "title": "Vanishing simplicial volume for certain affine manifolds",
+    "authors": [
+      "Michelle Bucher",
+      "Chris Connell",
+      "Jean-François Lafont"
+    ],
+    "year": 2016
+  },
+  {
+    "arxiv_id": "1509.00695",
+    "title": "Harmonic and invariant measures on foliated spaces",
+    "authors": [
+      "Chris Connell",
+      "Matilde Martínez"
+    ],
+    "year": 2015
+  },
+  {
+    "arxiv_id": "1506.03516",
+    "title": "A vanishing theorem for the homology of discrete subgroups of $\\mathrm{Sp}(n,1)$ and $\\mathrm{F}_4^{-20}$",
+    "authors": [
+      "Chris Connell",
+      "Benson Farb",
+      "D. B. McReynolds"
+    ],
+    "year": 2015
+  },
+  {
+    "arxiv_id": "1411.6164",
+    "title": "Erratum for \"The degree theorem in higher rank\"",
+    "authors": [
+      "Chris Connell",
+      "Benson Farb"
+    ],
+    "year": 2014
+  },
+  {
+    "arxiv_id": "1208.4876",
+    "title": "On Higher Graph Manifolds",
+    "authors": [
+      "Chris Connell",
+      "Pablo Suárez-Serrato"
+    ],
+    "year": 2012
+  },
+  {
+    "arxiv_id": "0710.1104",
+    "title": "Smooth Volume Rigidity for Manifolds with Negatively Curved Targets",
+    "authors": [
+      "Chris Connell"
+    ],
+    "year": 2007
+  },
+  {
+    "arxiv_id": "math/0607756",
+    "title": "Nonnegative Grassman Chambers are Balls",
+    "authors": [
+      "Chris Connell",
+      "Nets Hawk Katz"
+    ],
+    "year": 2006
+  },
+  {
+    "arxiv_id": "math/0507033",
+    "title": "Harmonicity of Gibbs measures",
+    "authors": [
+      "Chris Connell",
+      "Roman Muchnik"
+    ],
+    "year": 2005
+  },
+  {
+    "arxiv_id": "math/0408355",
+    "title": "Harmonicity of quasiconformal measures and Poisson boundaries of hyperbolic spaces",
+    "authors": [
+      "Chris Connell",
+      "Roman Muchnik"
+    ],
+    "year": 2004
+  },
+  {
+    "arxiv_id": "math/0101045",
+    "title": "Minimal entropy rigidity for lattices in products of rank one symmetric spaces",
+    "authors": [
+      "Christopher Connell",
+      "Benson Farb"
+    ],
+    "year": 2001
+  }
+]
