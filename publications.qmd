@@ -4,9 +4,9 @@ title: "Publications"
 
 # Publications
 
-This is a **selected list** of my work, not yet a complete historical bibliography. Records below are assembled from an explicitly reviewed seed list, and the automated updater checks arXiv and journal metadata for changes.
+This page is generated from my **manually verified bibliography**, which is still being expanded to include all historical publications.
 
-[Download selected publications as BibTeX](publications/papers.bib){.btn .btn-primary}
+[Download verified BibTeX](publications/connell.bib){.btn .btn-primary}
 
 ::: {.pub-list}
 
@@ -14,6 +14,6 @@ This is a **selected list** of my work, not yet a complete historical bibliograp
 
 :::
 
-::: {.note-text}
-The publication synchronizer preserves stable BibTeX citation keys and records potential newly discovered papers separately for review, rather than silently attributing papers with similar author names.
-:::
+## Automated publication discovery
+
+A separate [automatically generated bibliography](publications/papers.bib) gathers papers from arXiv, Crossref, dblp, and OpenAlex. It includes the verified entries plus additional **unreviewed candidates**, which may contain duplicate records or namesakes. Papers appear in the public list above only after they have been checked and added to my verified bibliography.
