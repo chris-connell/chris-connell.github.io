@@ -8,9 +8,18 @@
       "Shi Wang"
     ],
     "year": 2026,
-    "arxiv_id": "2309.15766",
     "journal": "Advances in Mathematics",
-    "arxiv_updated": "2023-09-27T16:29:52Z"
+    "booktitle": "",
+    "doi": "",
+    "arxiv_id": "2309.15766",
+    "sources": [
+      "verified"
+    ],
+    "url": "https://arxiv.org/abs/2309.15766",
+    "volume": "",
+    "issue": "",
+    "page": "",
+    "type": "article"
   },
   {
     "key": "ConnellIslamNguyenSpatzier2024Rigidity",
@@ -22,9 +31,18 @@
       "Ralf Spatzier"
     ],
     "year": 2026,
-    "arxiv_id": "2406.00558",
     "journal": "Mathematische Annalen",
-    "arxiv_updated": "2024-06-01T21:42:05Z"
+    "booktitle": "",
+    "doi": "",
+    "arxiv_id": "2406.00558",
+    "sources": [
+      "verified"
+    ],
+    "url": "https://arxiv.org/abs/2406.00558",
+    "volume": "",
+    "issue": "",
+    "page": "",
+    "type": "article"
   },
   {
     "key": "ConnellMcReynoldsWang2025HomologicalDimension",
@@ -35,8 +53,18 @@
       "Shi Wang"
     ],
     "year": 2025,
+    "journal": "",
+    "booktitle": "",
+    "doi": "",
     "arxiv_id": "2504.18923",
-    "arxiv_updated": "2026-08-09T17:55:44Z"
+    "sources": [
+      "verified"
+    ],
+    "url": "https://arxiv.org/abs/2504.18923",
+    "volume": "",
+    "issue": "",
+    "page": "",
+    "type": "misc"
   },
   {
     "key": "ConnellRuanWang2025DouadyEarle",
@@ -47,8 +75,18 @@
       "Shi Wang"
     ],
     "year": 2025,
+    "journal": "",
+    "booktitle": "",
+    "doi": "",
     "arxiv_id": "2512.15032",
-    "arxiv_updated": "2025-12-17T02:47:36Z"
+    "sources": [
+      "verified"
+    ],
+    "url": "https://arxiv.org/abs/2512.15032",
+    "volume": "",
+    "issue": "",
+    "page": "",
+    "type": "misc"
   },
   {
     "key": "ConnellRuanWang2024SimplicialVolume",
@@ -59,8 +97,18 @@
       "Shi Wang"
     ],
     "year": 2024,
+    "journal": "",
+    "booktitle": "",
+    "doi": "",
     "arxiv_id": "2410.19981",
-    "arxiv_updated": "2024-10-25T21:45:27Z"
+    "sources": [
+      "verified"
+    ],
+    "url": "https://arxiv.org/abs/2410.19981",
+    "volume": "",
+    "issue": "",
+    "page": "",
+    "type": "misc"
   },
   {
     "key": "ConnellDaiEtAl2024RCD",
@@ -74,8 +122,18 @@
       "Guofang Wei"
     ],
     "year": 2024,
+    "journal": "",
+    "booktitle": "",
+    "doi": "",
     "arxiv_id": "2411.04327",
-    "arxiv_updated": "2024-11-07T00:07:40Z"
+    "sources": [
+      "verified"
+    ],
+    "url": "https://arxiv.org/abs/2411.04327",
+    "volume": "",
+    "issue": "",
+    "page": "",
+    "type": "misc"
   },
   {
     "key": "ConnellIslamNguyenSpatzier2023Boundary",
@@ -87,8 +145,18 @@
       "Ralf Spatzier"
     ],
     "year": 2023,
+    "journal": "",
+    "booktitle": "",
+    "doi": "",
     "arxiv_id": "2303.00543",
-    "arxiv_updated": "2023-03-01T14:38:22Z"
+    "sources": [
+      "verified"
+    ],
+    "url": "https://arxiv.org/abs/2303.00543",
+    "volume": "",
+    "issue": "",
+    "page": "",
+    "type": "misc"
   },
   {
     "key": "ConnellMcReynoldsWang2023NaturalFlow",
@@ -99,8 +167,18 @@
       "Shi Wang"
     ],
     "year": 2023,
+    "journal": "",
+    "booktitle": "",
+    "doi": "",
     "arxiv_id": "2302.12665",
-    "arxiv_updated": "2026-03-26T12:11:34Z"
+    "sources": [
+      "verified"
+    ],
+    "url": "https://arxiv.org/abs/2302.12665",
+    "volume": "",
+    "issue": "",
+    "page": "",
+    "type": "misc"
   },
   {
     "key": "ConnellFarb2002Barycenter",
@@ -110,11 +188,18 @@
       "Benson Farb"
     ],
     "year": 2003,
-    "arxiv_id": "math/0204093",
-    "arxiv_updated": "2002-04-08T19:04:36Z",
-    "doi": "10.1090/pspum/071/2024628",
     "journal": "Proceedings of Symposia in Pure Mathematics",
-    "page": "19-50"
+    "booktitle": "",
+    "doi": "10.1090/pspum/071/2024628",
+    "arxiv_id": "math/0204093",
+    "sources": [
+      "verified"
+    ],
+    "url": "https://arxiv.org/abs/math/0204093",
+    "volume": "",
+    "issue": "",
+    "page": "19-50",
+    "type": "article"
   },
   {
     "key": "ConnellFarb2001Degree",
@@ -124,12 +209,17 @@
       "Benson Farb"
     ],
     "year": 2003,
-    "arxiv_id": "math/0101044",
     "journal": "Journal of Differential Geometry",
+    "booktitle": "",
     "doi": "10.4310/jdg/1090503052",
-    "arxiv_updated": "2001-01-05T22:28:33Z",
+    "arxiv_id": "math/0101044",
+    "sources": [
+      "verified"
+    ],
+    "url": "https://arxiv.org/abs/math/0101044",
     "volume": "65",
     "issue": "1",
-    "page": "19-59"
+    "page": "19-59",
+    "type": "article"
   }
 ]
