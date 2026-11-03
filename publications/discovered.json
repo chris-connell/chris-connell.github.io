@@ -1191,5 +1191,21 @@
     "sources": [
       "OpenAlex"
     ]
+  },
+  {
+    "title": "Schwarz Lemma in Quaternionic Setting and $\\mathbb C^4$",
+    "authors": [
+      "Chris Connell",
+      "Matvei Libine"
+    ],
+    "arxiv_id": "2611.02161",
+    "updated": "2026-11-01T19:56:32Z",
+    "year": 2026,
+    "doi": "",
+    "journal_ref": "",
+    "journal": "",
+    "sources": [
+      "arXiv"
+    ]
   }
 ]
