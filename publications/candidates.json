@@ -8,13 +8,15 @@
     "arxiv_id": "2611.02161",
     "updated": "2026-11-01T19:56:32Z",
     "year": 2026,
-    "doi": "",
+    "doi": "10.48550/arxiv.2611.02161",
     "journal_ref": "",
-    "journal": "",
+    "journal": "arXiv (Cornell University)",
     "sources": [
+      "OpenAlex",
       "arXiv"
     ],
-    "key": "CandidateConnell2026_b2d9cc6922"
+    "url": "https://doi.org/10.48550/arxiv.2611.02161",
+    "key": "CandidateConnell2026_38993e5978"
   },
   {
     "title": "Characterization of Blast Waveforms Produced by Different Driver Gasses in an Open-Ended Shock Tube Model",

@@ -1201,11 +1201,13 @@
     "arxiv_id": "2611.02161",
     "updated": "2026-11-01T19:56:32Z",
     "year": 2026,
-    "doi": "",
+    "doi": "10.48550/arxiv.2611.02161",
     "journal_ref": "",
-    "journal": "",
+    "journal": "arXiv (Cornell University)",
     "sources": [
+      "OpenAlex",
       "arXiv"
-    ]
+    ],
+    "url": "https://doi.org/10.48550/arxiv.2611.02161"
   }
 ]
