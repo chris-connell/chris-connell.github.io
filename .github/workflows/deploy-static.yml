@@ -1,0 +1,46 @@
+name: Deploy approved static GitHub Pages website
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check out published static files
+        uses: actions/checkout@v4
+      - name: Validate public website files
+        run: |
+          test -s site/index.html
+          test -s site/publications.html
+          if find site -type f \( -name '*.bib' -o -name '*.qmd' -o -name '*.py' -o -name 'papers.json' -o -name 'candidates.json' -o -name 'discovered.json' -o -name 'sources.json' -o -name '*.pem' \) | grep .; then
+            echo "ERROR: Private source or bibliography found in public website."
+            exit 1
+          fi
+          if grep -RIl --include='*.html' -E 'publications/(papers|connell)\.bib|publications/(candidates|discovered|papers)\.json' site; then
+            echo "ERROR: Public HTML references private bibliography files."
+            exit 1
+          fi
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Upload only the approved static website
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

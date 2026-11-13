@@ -1,9 +1,0 @@
----
-title: "Curriculum Vitae"
----
-
-# Curriculum Vitae
-
-A current downloadable CV will be added after verification.
-
-In the meantime, consult my [official Indiana University faculty profile](https://math.indiana.edu/about/faculty/connell-chris.html), [research overview](research.qmd), and [selected publications](publications.qmd).

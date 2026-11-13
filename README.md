@@ -1,60 +1,28 @@
-# Christopher G. Connell — academic website
+# Christopher G. Connell — Public Website
 
-Website: https://chris-connell.github.io/
+Public website: **https://chris-connell.github.io/**
 
-## Your two bibliographies
+This is the **public publishing repository**. It contains only generated website
+files under `site/`, plus this README and the GitHub Pages deployment workflow.
 
-**publications/connell.bib** is manually checked and is the single source of
-truth for the public-facing Publications page and verified BibTeX download.
-You can paste a much larger BibTeX file into it. Committing changes to main
-automatically rebuilds the publication listing; automated jobs do not edit
-this file. You control the citation keys and bibliographic content.
+The editable Quarto source, bibliography files, publication discovery data,
+and Python scripts are maintained in a separate **private** repository:
+[connell-website-source](https://github.com/chris-connell/connell-website-source)
+(access is restricted).
 
-**publications/papers.bib** is automatically generated from the entries in
-connell.bib plus discovered records from scholarly databases. Do not edit
-papers.bib by hand; every workflow run regenerates it. It contains
-unverified candidates as well as the manually checked publications.
+Please do **not** edit generated HTML directly. Edit the private Quarto pages
+and `publications/connell.bib` instead. Once a repository-scoped deploy key is
+configured, a private GitHub Actions workflow builds the complete site and
+commits only approved static output into the `site/` folder here. This public
+repository then automatically deploys `site/` to GitHub Pages.
 
-### Discovery sources
+No BibTeX bibliography, review dataset or Python program is meant to be
+distributed by this repository.
 
-- arXiv: author searches covering multiple name variants, paginated
-  beyond the most recent results (maximum 1,000 per query).
-- Crossref: journal articles and DOI metadata from author searches.
-- dblp: author-specific curated bibliography, profile 64/9215.
-- OpenAlex: works linked to a candidate author ID supported by two
-  independently verified publication DOIs, or IDs explicitly specified
-  in publications/sources.json.
+### Historical visibility
 
-The synchronizer saves discoveries to publications/discovered.json and
-writes unverified new papers to publications/candidates.json. Papers can be
-accepted by copying and checking their BibTeX entries from papers.bib into
-connell.bib. The website never attributes newly discovered records to you
-without review. Identical DOI, arXiv ID, or normalized title records are
-merged. Source outages do not empty the persistent discovery cache.
-
-Optional future sources include zbMATH Open, especially valuable for older
-mathematics publications. CiteSeer is not used at present.
-
-### Important files
-
-| File | Role |
-| --- | --- |
-| publications/connell.bib | Manually verified bibliography, website source |
-| publications/papers.bib | Generated scholarly candidate collection |
-| publications/discovered.json | Preserved source-search results |
-| publications/candidates.json | Unreviewed discoveries |
-| publications/papers.json | Generated structured verified bibliography |
-| publications/_list.qmd | Generated publication list for Quarto |
-| publications/sources.json | Search configuration and optional author IDs |
-| scripts/sync_publications.py | Synchronization program |
-
-The initial ten publications in connell.bib are a seed set only, and
-should be expanded using your full verified publication list.
-
-## Website publishing
-
-GitHub Actions rebuilds the site on each push to main and runs a scholarly
-discovery scan on a daily schedule or when manually started. GitHub Pages
-should have GitHub Actions selected under Settings > Pages.
-
-This repository does not contain a blanket license for its content.
+Older commits in this repository previously contained the Quarto source and
+bibliographic files. Removing them from the current branch does not eliminate
+the old Git history or copies that may have been downloaded. A separate
+history-reset decision is necessary if you want to reduce the visibility of
+those historical commits.
