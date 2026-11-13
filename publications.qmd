@@ -4,16 +4,10 @@ title: "Publications"
 
 # Publications
 
-This page is generated from my **manually verified bibliography**, which is still being expanded to include all historical publications.
-
-[Download verified BibTeX](publications/connell.bib){.btn .btn-primary}
+This list contains my verified research publications and preprints, and is being expanded to include earlier papers.
 
 ::: {.pub-list}
 
 {{< include publications/_list.qmd >}}
 
 :::
-
-## Automated publication discovery
-
-A separate [automatically generated bibliography](publications/papers.bib) gathers papers from arXiv, Crossref, dblp, and OpenAlex. It includes the verified entries plus additional **unreviewed candidates**, which may contain duplicate records or namesakes. Papers appear in the public list above only after they have been checked and added to my verified bibliography.

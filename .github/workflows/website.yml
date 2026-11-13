@@ -1,11 +1,9 @@
-name: Publish academic website
+name: Render safe static website snapshot
 
 on:
   push:
     branches: [main]
   workflow_dispatch:
-  schedule:
-    - cron: "17 7 * * *"
 
 permissions:
   contents: write
@@ -17,34 +15,40 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build-and-deploy:
+  render-and-publish:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-          cache: pip
-      - name: Install bibliography parser
-        run: python -m pip install -r requirements.txt
-      - name: Generate bibliography and refresh scholarly sources
+      - uses: quarto-dev/quarto-actions/setup@v2
+      - name: Render website using existing verified publication list
+        run: quarto render
+      - name: Remove any private source files from static output
         run: |
-          python scripts/sync_publications.py --discover
-      - name: Commit generated records
+          test -s _site/index.html
+          test -s _site/publications.html
+          find _site -type f \( -name '*.bib' -o -name '*.py' -o -name '*.qmd' -o -name 'papers.json' -o -name 'candidates.json' -o -name 'discovered.json' -o -name 'sources.json' \) -print -delete
+          if grep -RIl --include='*.html' -E 'publications/(papers|connell)\.bib|publications/(candidates|discovered|papers)\.json' _site; then
+            echo "ERROR: Bibliography links found in website HTML."
+            exit 1
+          fi
+      - name: Save approved rendered files as versioned static site
         run: |
+          mkdir -p site
+          rsync -a --delete _site/ site/
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add publications/papers.bib publications/papers.json publications/_list.qmd publications/candidates.json publications/discovered.json
+          git add -A site
           if ! git diff --cached --quiet; then
-            git commit -m "Refresh publication records"
-            git push
+            git commit -m "Save clean static GitHub Pages snapshot"
+            git push origin HEAD:main
           fi
-      - uses: quarto-dev/quarto-actions/setup@v2
-      - run: quarto render
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:
-          path: _site
-      - uses: actions/deploy-pages@v4
+          path: site
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

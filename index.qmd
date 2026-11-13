@@ -57,7 +57,7 @@ Geometric aspects of ergodic theory, random walks, and related dynamical phenome
 
 ## Publications
 
-The [publications page](publications.qmd) contains selected articles and preprints with links to arXiv and a downloadable [BibTeX bibliography](publications/papers.bib). The bibliography is designed to refresh from public scholarly metadata automatically; the full historical list is being assembled.
+The [publications page](publications.qmd) contains selected articles and preprints with links to journal publications and arXiv preprints. The bibliography is designed to refresh from public scholarly metadata automatically; the full historical list is being assembled.
 
 [Browse publications](publications.qmd){.btn .btn-outline-primary}
 

@@ -2,9 +2,6 @@ project:
   type: website
   output-dir: _site
   resources:
-    - publications/connell.bib
-    - publications/papers.bib
-    - publications/papers.json
     - assets/favicon.svg
 
 website:
