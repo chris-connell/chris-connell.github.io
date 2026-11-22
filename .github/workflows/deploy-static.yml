@@ -26,7 +26,9 @@ jobs:
       - name: Validate public website files
         run: |
           test -s site/index.html
-          test -s site/publications.html
+          test -s site/assets/connell-portrait.jpg
+          grep -q 'id="publications"' site/index.html
+          test "$(grep -o '<h1' site/index.html | wc -l)" -eq 1
           if find site -type f \( -name '*.bib' -o -name '*.qmd' -o -name '*.py' -o -name 'papers.json' -o -name 'candidates.json' -o -name 'discovered.json' -o -name 'sources.json' -o -name '*.pem' \) | grep .; then
             echo "ERROR: Private source or bibliography found in public website."
             exit 1
