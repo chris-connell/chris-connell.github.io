@@ -1,5 +1,40 @@
 [
   {
+    "objectID": "cv.html",
+    "href": "cv.html",
+    "title": "Curriculum Vitae",
+    "section": "",
+    "text": "Curriculum Vitae\nA current downloadable CV will be added after verification.\nIn the meantime, consult my official Indiana University faculty profile, research overview, and selected publications."
+  },
+  {
+    "objectID": "teaching.html",
+    "href": "teaching.html",
+    "title": "Teaching",
+    "section": "",
+    "text": "Teaching\nCourse information, teaching materials, and student resources will be organized here.\nFor current courses and advising information, please refer to the Indiana University Department of Mathematics."
+  },
+  {
+    "objectID": "publications.html",
+    "href": "publications.html",
+    "title": "Publications",
+    "section": "",
+    "text": "This page displays research from my verified bibliography, which I am expanding to include all of my publications.\n\n\n\n\n\n\nNonpositively curved 4-manifolds with zero Euler characteristic\n\n\nChris Connell, Yuping Ruan, Shi Wang\n\n\nAdvances in Mathematics · 2026\n\narXiv · PDF\n\n\n\nRigidity of compact rank one symmetric spaces\n\n\nChris Connell, Mitul Islam, Thang Nguyen, Ralf Spatzier\n\n\nMathematische Annalen · 2026\n\narXiv · PDF\n\n\n\nSome recent applications of the barycenter method in geometry\n\n\nChristopher Connell, Benson Farb\n\n\nProceedings of Symposia in Pure Mathematics · 2003\n\nDOI · arXiv · PDF\n\n\n\nThe Degree Theorem in higher rank\n\n\nChristopher Connell, Benson Farb\n\n\nJournal of Differential Geometry · 2003\n\nDOI · arXiv · PDF\n\n\n\n\n\n\nHomological dimension of discrete subgroups in higher rank simple Lie groups\n\n\nChris Connell, D. B. McReynolds, Shi Wang\n\n\narXiv preprint · 2025\n\narXiv · PDF\n\n\n\nOn the Jacobian of the Douady-Earle extension\n\n\nChris Connell, Yuping Ruan, Shi Wang\n\n\narXiv preprint · 2025\n\narXiv · PDF\n\n\n\nSimplicial volume and isolated, closed totally geodesic submanifolds of codimension one\n\n\nChris Connell, Yuping Ruan, Shi Wang\n\n\narXiv preprint · 2024\n\narXiv · PDF\n\n\n\nVolume entropy and rigidity for RCD-spaces\n\n\nChris Connell, Xianzhe Dai, Jesús Núñez-Zimbrón, Raquel Perales, Pablo Suárez-Serrato, Guofang Wei\n\n\narXiv preprint · 2024\n\narXiv · PDF\n\n\n\nBoundary actions of lattices and C^0 local semi-rigidity\n\n\nChris Connell, Mitul Islam, Thang Nguyen, Ralf Spatzier\n\n\narXiv preprint · 2023\n\narXiv · PDF\n\n\n\nThe natural flow and the critical exponent\n\n\nChris Connell, D. B. McReynolds, Shi Wang\n\n\narXiv preprint · 2023\n\narXiv · PDF\n\n\n\nUnverified results from arXiv and scholarly indexes are kept in a private research bibliography and do not appear here until checked."
+  },
+  {
+    "objectID": "publications.html#journal-articles",
+    "href": "publications.html#journal-articles",
+    "title": "Publications",
+    "section": "",
+    "text": "Nonpositively curved 4-manifolds with zero Euler characteristic\n\n\nChris Connell, Yuping Ruan, Shi Wang\n\n\nAdvances in Mathematics · 2026\n\narXiv · PDF\n\n\n\nRigidity of compact rank one symmetric spaces\n\n\nChris Connell, Mitul Islam, Thang Nguyen, Ralf Spatzier\n\n\nMathematische Annalen · 2026\n\narXiv · PDF\n\n\n\nSome recent applications of the barycenter method in geometry\n\n\nChristopher Connell, Benson Farb\n\n\nProceedings of Symposia in Pure Mathematics · 2003\n\nDOI · arXiv · PDF\n\n\n\nThe Degree Theorem in higher rank\n\n\nChristopher Connell, Benson Farb\n\n\nJournal of Differential Geometry · 2003\n\nDOI · arXiv · PDF"
+  },
+  {
+    "objectID": "publications.html#preprints-and-other-works",
+    "href": "publications.html#preprints-and-other-works",
+    "title": "Publications",
+    "section": "",
+    "text": "Homological dimension of discrete subgroups in higher rank simple Lie groups\n\n\nChris Connell, D. B. McReynolds, Shi Wang\n\n\narXiv preprint · 2025\n\narXiv · PDF\n\n\n\nOn the Jacobian of the Douady-Earle extension\n\n\nChris Connell, Yuping Ruan, Shi Wang\n\n\narXiv preprint · 2025\n\narXiv · PDF\n\n\n\nSimplicial volume and isolated, closed totally geodesic submanifolds of codimension one\n\n\nChris Connell, Yuping Ruan, Shi Wang\n\n\narXiv preprint · 2024\n\narXiv · PDF\n\n\n\nVolume entropy and rigidity for RCD-spaces\n\n\nChris Connell, Xianzhe Dai, Jesús Núñez-Zimbrón, Raquel Perales, Pablo Suárez-Serrato, Guofang Wei\n\n\narXiv preprint · 2024\n\narXiv · PDF\n\n\n\nBoundary actions of lattices and C^0 local semi-rigidity\n\n\nChris Connell, Mitul Islam, Thang Nguyen, Ralf Spatzier\n\n\narXiv preprint · 2023\n\narXiv · PDF\n\n\n\nThe natural flow and the critical exponent\n\n\nChris Connell, D. B. McReynolds, Shi Wang\n\n\narXiv preprint · 2023\n\narXiv · PDF"
+  },
+  {
     "objectID": "research.html",
     "href": "research.html",
     "title": "Research",
@@ -35,48 +70,6 @@
     "text": "A selection of research articles and preprints is available on the publications page. That list is being expanded and connected to journal and arXiv metadata."
   },
   {
-    "objectID": "teaching.html",
-    "href": "teaching.html",
-    "title": "Teaching",
-    "section": "",
-    "text": "Teaching\nCourse information, teaching materials, and student resources will be organized here.\nFor current courses and advising information, please refer to the Indiana University Department of Mathematics."
-  },
-  {
-    "objectID": "cv.html",
-    "href": "cv.html",
-    "title": "Curriculum Vitae",
-    "section": "",
-    "text": "Curriculum Vitae\nA current downloadable CV will be added after verification.\nIn the meantime, consult my official Indiana University faculty profile, research overview, and selected publications."
-  },
-  {
-    "objectID": "talks.html",
-    "href": "talks.html",
-    "title": "Talks",
-    "section": "",
-    "text": "Talks\nInformation about selected lectures, conference presentations, and expository talks will be added here.\nFor a current list of presentations or lecture materials, please contact me."
-  },
-  {
-    "objectID": "publications.html",
-    "href": "publications.html",
-    "title": "Publications",
-    "section": "",
-    "text": "This list contains my verified research publications and preprints, and is being expanded to include earlier papers.\n\n\n\n\n\n\nNonpositively curved 4-manifolds with zero Euler characteristic\n\n\nChris Connell, Yuping Ruan, Shi Wang\n\n\nAdvances in Mathematics · 2026\n\narXiv · PDF\n\n\n\nRigidity of compact rank one symmetric spaces\n\n\nChris Connell, Mitul Islam, Thang Nguyen, Ralf Spatzier\n\n\nMathematische Annalen · 2026\n\narXiv · PDF\n\n\n\nSome recent applications of the barycenter method in geometry\n\n\nChristopher Connell, Benson Farb\n\n\nProceedings of Symposia in Pure Mathematics · 2003\n\nDOI · arXiv · PDF\n\n\n\nThe Degree Theorem in higher rank\n\n\nChristopher Connell, Benson Farb\n\n\nJournal of Differential Geometry · 2003\n\nDOI · arXiv · PDF\n\n\n\n\n\n\nHomological dimension of discrete subgroups in higher rank simple Lie groups\n\n\nChris Connell, D. B. McReynolds, Shi Wang\n\n\narXiv preprint · 2025\n\narXiv · PDF\n\n\n\nOn the Jacobian of the Douady-Earle extension\n\n\nChris Connell, Yuping Ruan, Shi Wang\n\n\narXiv preprint · 2025\n\narXiv · PDF\n\n\n\nSimplicial volume and isolated, closed totally geodesic submanifolds of codimension one\n\n\nChris Connell, Yuping Ruan, Shi Wang\n\n\narXiv preprint · 2024\n\narXiv · PDF\n\n\n\nVolume entropy and rigidity for RCD-spaces\n\n\nChris Connell, Xianzhe Dai, Jesús Núñez-Zimbrón, Raquel Perales, Pablo Suárez-Serrato, Guofang Wei\n\n\narXiv preprint · 2024\n\narXiv · PDF\n\n\n\nBoundary actions of lattices and C^0 local semi-rigidity\n\n\nChris Connell, Mitul Islam, Thang Nguyen, Ralf Spatzier\n\n\narXiv preprint · 2023\n\narXiv · PDF\n\n\n\nThe natural flow and the critical exponent\n\n\nChris Connell, D. B. McReynolds, Shi Wang\n\n\narXiv preprint · 2023\n\narXiv · PDF"
-  },
-  {
-    "objectID": "publications.html#journal-articles",
-    "href": "publications.html#journal-articles",
-    "title": "Publications",
-    "section": "",
-    "text": "Nonpositively curved 4-manifolds with zero Euler characteristic\n\n\nChris Connell, Yuping Ruan, Shi Wang\n\n\nAdvances in Mathematics · 2026\n\narXiv · PDF\n\n\n\nRigidity of compact rank one symmetric spaces\n\n\nChris Connell, Mitul Islam, Thang Nguyen, Ralf Spatzier\n\n\nMathematische Annalen · 2026\n\narXiv · PDF\n\n\n\nSome recent applications of the barycenter method in geometry\n\n\nChristopher Connell, Benson Farb\n\n\nProceedings of Symposia in Pure Mathematics · 2003\n\nDOI · arXiv · PDF\n\n\n\nThe Degree Theorem in higher rank\n\n\nChristopher Connell, Benson Farb\n\n\nJournal of Differential Geometry · 2003\n\nDOI · arXiv · PDF"
-  },
-  {
-    "objectID": "publications.html#preprints-and-other-works",
-    "href": "publications.html#preprints-and-other-works",
-    "title": "Publications",
-    "section": "",
-    "text": "Homological dimension of discrete subgroups in higher rank simple Lie groups\n\n\nChris Connell, D. B. McReynolds, Shi Wang\n\n\narXiv preprint · 2025\n\narXiv · PDF\n\n\n\nOn the Jacobian of the Douady-Earle extension\n\n\nChris Connell, Yuping Ruan, Shi Wang\n\n\narXiv preprint · 2025\n\narXiv · PDF\n\n\n\nSimplicial volume and isolated, closed totally geodesic submanifolds of codimension one\n\n\nChris Connell, Yuping Ruan, Shi Wang\n\n\narXiv preprint · 2024\n\narXiv · PDF\n\n\n\nVolume entropy and rigidity for RCD-spaces\n\n\nChris Connell, Xianzhe Dai, Jesús Núñez-Zimbrón, Raquel Perales, Pablo Suárez-Serrato, Guofang Wei\n\n\narXiv preprint · 2024\n\narXiv · PDF\n\n\n\nBoundary actions of lattices and C^0 local semi-rigidity\n\n\nChris Connell, Mitul Islam, Thang Nguyen, Ralf Spatzier\n\n\narXiv preprint · 2023\n\narXiv · PDF\n\n\n\nThe natural flow and the critical exponent\n\n\nChris Connell, D. B. McReynolds, Shi Wang\n\n\narXiv preprint · 2023\n\narXiv · PDF"
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Home",
@@ -103,5 +96,12 @@
     "title": "Home",
     "section": "Contact",
     "text": "Contact\nDepartment of Mathematics\nIndiana University Bloomington\nconnell@iu.edu\nOfficial Indiana University faculty profile"
+  },
+  {
+    "objectID": "talks.html",
+    "href": "talks.html",
+    "title": "Talks",
+    "section": "",
+    "text": "Talks\nInformation about selected lectures, conference presentations, and expository talks will be added here.\nFor a current list of presentations or lecture materials, please contact me."
   }
 ]
