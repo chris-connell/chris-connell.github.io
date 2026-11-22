@@ -1,28 +1,33 @@
-# Christopher G. Connell — Public Website
+# Christopher G. Connell — Public Academic Website
 
-Public website: **https://chris-connell.github.io/**
+**Visit the actual website:** https://chris-connell.github.io/
 
-This is the **public publishing repository**. It contains only generated website
-files under `site/`, plus this README and the GitHub Pages deployment workflow.
+This public repository contains **generated website files at its root**, including
+\`index.html\`, \`styles.css\`, \`assets/\`, and \`site_libs/\`. The
+\`.github/workflows/deploy-static.yml\` GitHub Actions workflow publishes
+these static files to GitHub Pages.
 
-The editable Quarto source, bibliography files, publication discovery data,
-and Python scripts are maintained in a separate **private** repository:
-[connell-website-source](https://github.com/chris-connell/connell-website-source)
-(access is restricted).
+The editable Quarto pages and all scholarly research and review databases
+remain in the private [connell-website-source](https://github.com/chris-connell/connell-website-source)
+repository, accessible only to authorized collaborators.
 
-Please do **not** edit generated HTML directly. Edit the private Quarto pages
-and `publications/connell.bib` instead. Once a repository-scoped deploy key is
-configured, a private GitHub Actions workflow builds the complete site and
-commits only approved static output into the `site/` folder here. This public
-repository then automatically deploys `site/` to GitHub Pages.
+**Do not edit this generated HTML directly.** Change \`index.qmd\`, 
+\`styles.css\`, or the manually checked bibliography
+\`publications/connell.bib\` in the private repository instead. A successful
+private workflow automatically builds the website, updates this public
+repository's root files, and triggers GitHub Pages.
 
-No BibTeX bibliography, review dataset or Python program is meant to be
-distributed by this repository.
+No private BibTeX files, generated discovery databases, or Python programs
+are intentionally published here.
 
-### Historical visibility
+## GitHub repository versus website
 
-Older commits in this repository previously contained the Quarto source and
-bibliographic files. Removing them from the current branch does not eliminate
-the old Git history or copies that may have been downloaded. A separate
-history-reset decision is necessary if you want to reduce the visibility of
-those historical commits.
+The repository's GitHub page displays this README and the version-controlled
+file list. The *website*, displaying the portrait and academic content, is at
+**https://chris-connell.github.io/**. They are different interfaces.
+
+## Historical visibility
+
+Earlier public commits contained source and bibliography files.
+Removing files from the active branch does not erase old Git history,
+forked repositories, or external caches.

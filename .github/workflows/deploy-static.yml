@@ -23,26 +23,32 @@ jobs:
     steps:
       - name: Check out published static files
         uses: actions/checkout@v4
-      - name: Validate public website files
+      - name: Verify public site's ROOT index and privacy
         run: |
-          test -s site/index.html
-          test -s site/assets/connell-portrait.jpg
-          grep -q 'id="publications"' site/index.html
-          test "$(grep -o '<h1' site/index.html | wc -l)" -eq 1
-          if find site -type f \( -name '*.bib' -o -name '*.qmd' -o -name '*.py' -o -name 'papers.json' -o -name 'candidates.json' -o -name 'discovered.json' -o -name 'sources.json' -o -name '*.pem' \) | grep .; then
+          test -s index.html
+          test -s assets/connell-portrait.jpg
+          grep -q 'id="publications"' index.html
+          test "$(grep -o '<h1' index.html | wc -l)" -eq 1
+          if find . -type f \( -name '*.bib' -o -name '*.qmd' -o -name '*.py' -o -name 'papers.json' -o -name 'candidates.json' -o -name 'discovered.json' -o -name 'sources.json' -o -name '*.pem' \) -not -path './.git/*' | grep .; then
             echo "ERROR: Private source or bibliography found in public website."
             exit 1
           fi
-          if grep -RIl --include='*.html' -E 'publications/(papers|connell)\.bib|publications/(candidates|discovered|papers)\.json' site; then
+          if grep -RIl --include='*.html' -E 'publications/(papers|connell)\.bib|publications/(candidates|discovered|papers)\.json' . --exclude-dir=.git; then
             echo "ERROR: Public HTML references private bibliography files."
             exit 1
           fi
+      - name: Stage only static site content for Pages
+        run: |
+          mkdir -p "$RUNNER_TEMP/pages-root"
+          rsync -a --exclude='.git/' --exclude='.github/' --exclude='README.md' \
+            ./ "$RUNNER_TEMP/pages-root/"
+          test -s "$RUNNER_TEMP/pages-root/index.html"
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
-      - name: Upload only the approved static website
+      - name: Upload static site from the public ROOT
         uses: actions/upload-pages-artifact@v4
         with:
-          path: site
+          path: ${{ runner.temp }}/pages-root
       - name: Deploy GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
