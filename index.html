@@ -76,6 +76,35 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -283,6 +312,255 @@ Mathematische Annalen · 2026
 </div>
 <div class="publication-item">
 <div class="pub-title">
+Carnot metrics, dynamics and local rigidity
+</div>
+<div class="pub-authors">
+Chris Connell, Thang Nguyen, Ralf Spatzier
+</div>
+<div class="pub-details">
+Ergodic Theory and Dynamical Systems · 2022
+</div>
+<p><a href="https://doi.org/10.1017/etds.2021.116">DOI</a></p>
+</div>
+<div class="publication-item">
+<div class="pub-title">
+Homological norms on nonpositively curved manifolds
+</div>
+<div class="pub-authors">
+Chris Connell, Shi Wang
+</div>
+<div class="pub-details">
+Commentarii Mathematici Helvetici · 2022
+</div>
+<p><a href="https://doi.org/10.4171/cmh/550">DOI</a></p>
+</div>
+<div class="publication-item">
+<div class="pub-title">
+Maximal volume entropy rigidity for {RCD}<span class="math inline">\(\ast\)</span>(-(N-1),N) spaces
+</div>
+<div class="pub-authors">
+Chris Connell, Xianzhe Dai, Jes{&amp;#x27;{u}}s N{&amp;#x27;{u}}{~{n}}ez-Zimbr{&amp;#x27;{o}}n, Raquel Perales, Pablo Su{&amp;#x27;{a}}rez-Serrato, Guofang Wei
+</div>
+<div class="pub-details">
+Journal of the London Mathematical Society · 2021
+</div>
+<p><a href="https://doi.org/10.1112/jlms.12470">DOI</a></p>
+</div>
+<div class="publication-item">
+<div class="pub-title">
+Hyperbolic rank rigidity for manifolds of <span class="math inline">\(\frac{1}{4}\)</span>-pinched negative curvature
+</div>
+<div class="pub-authors">
+Chris Connell, Thang Nguyen, Ralf Spatzier
+</div>
+<div class="pub-details">
+Ergodic Theory and Dynamical Systems · 2020
+</div>
+<p><a href="https://doi.org/10.1017/etds.2018.113">DOI</a></p>
+</div>
+<div class="publication-item">
+<div class="pub-title">
+Some remarks on the simplicial volume of nonpositively curved manifolds
+</div>
+<div class="pub-authors">
+Chris Connell, Shi Wang
+</div>
+<div class="pub-details">
+Math. Ann. · 2020
+</div>
+<p><a href="https://doi.org/10.1007/s00208-020-01987-6">DOI</a></p>
+</div>
+<div class="publication-item">
+<div class="pub-title">
+On higher graph manifolds
+</div>
+<div class="pub-authors">
+C. Connell, P. Su&amp;#x27;{a}rez-Serrato
+</div>
+<div class="pub-details">
+Int. Math. Res. Not. IMRN · 2019
+</div>
+<p><a href="https://doi.org/10.1093/imrn/rnx133">DOI</a></p>
+</div>
+<div class="publication-item">
+<div class="pub-title">
+Positivity of simplicial volume for nonpositively curved manifolds with a {R}icci-type curvature condition
+</div>
+<div class="pub-authors">
+Chris Connell, Shi Wang
+</div>
+<div class="pub-details">
+Groups Geom. Dyn. · 2019
+</div>
+<p><a href="https://doi.org/10.4171/ggd/512">DOI</a></p>
+</div>
+<div class="publication-item">
+<div class="pub-title">
+Vanishing simplicial volume for certain affine manifolds
+</div>
+<div class="pub-authors">
+Michelle Bucher, Chris Connell, Jean-Franois Lafont
+</div>
+<div class="pub-details">
+Proc. Amer. Math. Soc. · 2018
+</div>
+<p><a href="https://doi.org/10.1090/proc/13799">DOI</a></p>
+</div>
+<div class="publication-item">
+<div class="pub-title">
+Concavifying the quasiconcave
+</div>
+<div class="pub-authors">
+Chris Connell, Eric B. Rasmusen
+</div>
+<div class="pub-details">
+J. Convex Anal. · 2017
+</div>
+</div>
+<div class="publication-item">
+<div class="pub-title">
+Erratum for ``{T}he degree theorem in higher rank''[ {MR}2057530]
+</div>
+<div class="pub-authors">
+Chris Connell, Benson Farb
+</div>
+<div class="pub-details">
+J. Differential Geom. · 2017
+</div>
+</div>
+<div class="publication-item">
+<div class="pub-title">
+Harmonic and invariant measures on foliated spaces
+</div>
+<div class="pub-authors">
+Chris Connell, Matilde Mart&amp;#x27;{i}nez
+</div>
+<div class="pub-details">
+Trans. Amer. Math. Soc. · 2017
+</div>
+<p><a href="https://doi.org/10.1090/tran/6811">DOI</a></p>
+</div>
+<div class="publication-item">
+<div class="pub-title">
+A vanishing theorem for the homology of discrete subgroups of {Sp<span class="math inline">\((n,1)\)</span>} and {F<span class="math inline">\(_4^{-20}\)</span>}
+</div>
+<div class="pub-authors">
+Chris Connell, Benson Farb, D. B. McReynolds
+</div>
+<div class="pub-details">
+J. Lond. Math. Soc. (2) · 2016
+</div>
+<p><a href="https://doi.org/10.1112/jlms/jdw036">DOI</a></p>
+</div>
+<div class="publication-item">
+<div class="pub-title">
+Asymptotic conditions for smooth rigidity of negatively curved manifolds
+</div>
+<div class="pub-authors">
+Chris Connell
+</div>
+<div class="pub-details">
+Pure Appl. Math. Q. · 2012
+</div>
+<p><a href="https://doi.org/10.4310/pamq.2012.v8.n1.a7">DOI</a></p>
+</div>
+<div class="publication-item">
+<div class="pub-title">
+Ends of negatively curved surfaces in {E}uclidean space
+</div>
+<div class="pub-authors">
+Chris Connell, John Ullman
+</div>
+<div class="pub-details">
+Manuscripta Math. · 2010
+</div>
+<p><a href="https://doi.org/10.1007/s00229-009-0324-x">DOI</a></p>
+</div>
+<div class="publication-item">
+<div class="pub-title">
+Topology of negatively curved real affine algebraic surfaces
+</div>
+<div class="pub-authors">
+Chris Connell, Mohammad Ghomi
+</div>
+<div class="pub-details">
+J. Reine Angew. Math. (Crelle) · 2008
+</div>
+<p><a href="https://doi.org/10.1515/crelle.2008.078">DOI</a></p>
+</div>
+<div class="publication-item">
+<div class="pub-title">
+Harmonicity of quasiconformal measures and {P}oisson boundaries of hyperbolic spaces
+</div>
+<div class="pub-authors">
+Chris Connell, Roman Muchnik
+</div>
+<div class="pub-details">
+Geom. Funct. Anal. · 2007
+</div>
+<p><a href="https://doi.org/10.1007/s00039-007-0608-9">DOI</a></p>
+</div>
+<div class="publication-item">
+<div class="pub-title">
+Harmonicity of {G}ibbs measures
+</div>
+<div class="pub-authors">
+Chris Connell, Roman Muchnik
+</div>
+<div class="pub-details">
+Duke Math. J. · 2007
+</div>
+<p><a href="https://doi.org/10.1215/s0012-7094-07-13732-3">DOI</a></p>
+</div>
+<div class="publication-item">
+<div class="pub-title">
+A solution to certain polynomial equations with applications to nonlinear fitting
+</div>
+<div class="pub-authors">
+Chris Connell
+</div>
+<div class="pub-details">
+Math. Comp. · 2005
+</div>
+<p><a href="https://doi.org/10.1090/s0025-5718-04-01663-1">DOI</a></p>
+</div>
+<div class="publication-item">
+<div class="pub-title">
+Volume rigidity for finite volume manifolds
+</div>
+<div class="pub-authors">
+Jeffrey Boland, Chris Connell, Juan Souto
+</div>
+<div class="pub-details">
+Amer. J. Math. · 2005
+</div>
+</div>
+<div class="publication-item">
+<div class="pub-title">
+Minimal entropy rigidity for lattices in products of rank one symmetric spaces
+</div>
+<div class="pub-authors">
+Christopher Connell, Benson Farb
+</div>
+<div class="pub-details">
+Comm. Anal. Geom. · 2003
+</div>
+<p><a href="https://doi.org/10.4310/cag.2003.v11.n5.a7">DOI</a></p>
+</div>
+<div class="publication-item">
+<div class="pub-title">
+Minimal {L}yapunov exponents, quasiconformal structures, and rigidity of non-positively curved manifolds
+</div>
+<div class="pub-authors">
+Chris Connell
+</div>
+<div class="pub-details">
+Ergodic Theory Dynam. Systems · 2003
+</div>
+<p><a href="https://doi.org/10.1017/s0143385702001189">DOI</a></p>
+</div>
+<div class="publication-item">
+<div class="pub-title">
 Some recent applications of the barycenter method in geometry
 </div>
 <div class="pub-authors">
@@ -304,6 +582,67 @@ Christopher Connell, Benson Farb
 Journal of Differential Geometry · 2003
 </div>
 <p><a href="https://doi.org/10.4310/jdg/1090503052">DOI</a> · <a href="https://arxiv.org/abs/math/0101044">arXiv</a> · <a href="https://arxiv.org/pdf/math/0101044">PDF</a></p>
+</div>
+<div class="publication-item">
+<div class="pub-title">
+A characterization of homogeneous spaces with positive hyperbolic rank
+</div>
+<div class="pub-authors">
+Christopher Connell
+</div>
+<div class="pub-details">
+Geom. Dedicata · 2002
+</div>
+<p><a href="https://doi.org/10.1023/a%3A1020307604978">DOI</a></p>
+</div>
+<div class="publication-item">
+<div class="pub-title">
+Minimal entropy rigidity for foliations of compact spaces
+</div>
+<div class="pub-authors">
+Jeffrey Boland, Christopher Connell
+</div>
+<div class="pub-details">
+Israel J. Math. · 2002
+</div>
+<p><a href="https://doi.org/10.1007/bf02785426">DOI</a></p>
+</div>
+<div class="publication-item">
+<div class="pub-title">
+Asymptotic harmonicity of negatively curved homogeneous spaces and their measures at infinity
+</div>
+<div class="pub-authors">
+Christopher Connell
+</div>
+<div class="pub-details">
+Comm. Anal. Geom. · 2000
+</div>
+<p><a href="https://doi.org/10.4310/cag.2000.v8.n3.a7">DOI</a></p>
+</div>
+</section>
+<section id="books-chapters-and-proceedings" class="level3">
+<h3 data-anchor-id="books-chapters-and-proceedings">Books, chapters and proceedings</h3>
+<div class="publication-item">
+<div class="pub-title">
+TensorMode Algorithm for Network Embedding in Dynamic Environments
+</div>
+<div class="pub-authors">
+Chris Connell, Yang Wang
+</div>
+<div class="pub-details">
+2021 IEEE International Conference on Data Mining Workshop on High Dimensional Data Mining (ICDMW) · 2021
+</div>
+</div>
+<div class="publication-item">
+<div class="pub-title">
+Rigidity and dynamics of negatively curved homogeneous spaces
+</div>
+<div class="pub-authors">
+Christopher G. Connell
+</div>
+<div class="pub-details">
+Book · 1999
+</div>
 </div>
 </section>
 <section id="preprints-and-other-works" class="level3">
@@ -379,6 +718,42 @@ Chris Connell, D. B. McReynolds, Shi Wang
 arXiv preprint · 2023
 </div>
 <p><a href="https://arxiv.org/abs/2302.12665">arXiv</a> · <a href="https://arxiv.org/pdf/2302.12665">PDF</a></p>
+</div>
+<div class="publication-item">
+<div class="pub-title">
+DynACPD Embedding Algorithm for Prediction Tasks in Dynamic Networks
+</div>
+<div class="pub-authors">
+Chris Connell, Yang Wang
+</div>
+<div class="pub-details">
+arXiv preprint · 2021
+</div>
+<p><a href="https://arxiv.org/abs/2103.07080">arXiv</a> · <a href="https://arxiv.org/pdf/2103.07080">PDF</a></p>
+</div>
+<div class="publication-item">
+<div class="pub-title">
+Splitting a Pie: Mixed Strategies in Bargaining Under Complete Information
+</div>
+<div class="pub-authors">
+Christopher Connell, Eric Bennett Rasmusen
+</div>
+<div class="pub-details">
+Misc · 2020
+</div>
+<p><a href="https://doi.org/10.2139/ssrn.3492465">DOI</a></p>
+</div>
+<div class="publication-item">
+<div class="pub-title">
+The Circular Law for Random Matrices with Intra-row Dependence
+</div>
+<div class="pub-authors">
+Chris Connell, Pawan Patel
+</div>
+<div class="pub-details">
+arXiv preprint · 2018
+</div>
+<p><a href="https://arxiv.org/abs/1801.04659">arXiv</a> · <a href="https://arxiv.org/pdf/1801.04659">PDF</a></p>
 </div>
 </section>
 </div>
